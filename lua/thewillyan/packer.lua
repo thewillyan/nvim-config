@@ -8,16 +8,12 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
+      'nvim-telescope/telescope.nvim', tag = '0.1.1',
+      -- or                            , branch = '0.1.x',
+      requires = { {'nvim-lua/plenary.nvim'} }
   }
-
-  use { "arturgoms/moonbow.nvim" }
-
+  use {'nvim-telescope/telescope-ui-select.nvim' }
   use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-
-  use "lukas-reineke/indent-blankline.nvim"
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -39,6 +35,21 @@ return require('packer').startup(function(use)
 		  -- Snippets
 		  {'L3MON4D3/LuaSnip'},             -- Required
 		  {'rafamadriz/friendly-snippets'}, -- Optional
+
 	  }
   }
+
+  -- appearence
+  use { "arturgoms/moonbow.nvim" }
+  use {
+      'nvim-lualine/lualine.nvim',
+       --requires = { 'nvim-tree/nvim-web-devicons', opt = false }
+  }
+  use "lukas-reineke/indent-blankline.nvim"
+
+  -- Linters and formaters
+  use "jose-elias-alvarez/null-ls.nvim"
+
+  -- Trash (java)
+  use 'mfussenegger/nvim-jdtls'
 end)

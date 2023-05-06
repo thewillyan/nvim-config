@@ -5,13 +5,6 @@ local lsp = require('lsp-zero').preset({
   suggest_lsp_servers = false,
 })
 
-lsp.ensure_installed({
-	'tsserver',
-	'eslint',
-	'lua_ls',
-	'rust_analyzer',
-})
-
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -48,7 +41,6 @@ lsp.configure('rust_analyzer', {
         },
     },
 })
-
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 
