@@ -1,12 +1,12 @@
 local lsp = require('lsp-zero').preset({
-  name = 'minimal',
-  set_lsp_keymaps = true,
-  manage_nvim_cmp = true,
-  suggest_lsp_servers = false,
+    name = 'minimal',
+    set_lsp_keymaps = true,
+    manage_nvim_cmp = true,
+    suggest_lsp_servers = false,
 })
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
@@ -36,11 +36,25 @@ lsp.configure('rust_analyzer', {
             inlayHints = { locationLinks = false },
             diagnostics = {
                 enable = true,
-                experimental = { enable = true, },
+                --experimental = { enable = true, },
             },
         },
     },
 })
+
+lsp.configure('zls', {
+    settings = {
+        ['zls'] = {
+            enable_inlay_hints = true,
+            inlay_hints_show_builtin = true,
+            inlay_hints_exclude_single_argument = true,
+            inlay_hints_hide_redundant_param_names = true,
+            inlay_hints_hide_redundant_param_names_last_token = true,
+        }
+    }
+})
+
+
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
 
